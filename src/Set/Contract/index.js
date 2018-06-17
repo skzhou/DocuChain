@@ -6,6 +6,7 @@ export default class Contract extends React.Component {
       <div>
         <label>Contract</label>
         <textarea
+          id="contract-input"
           className="form-control"
           rows="4"
           cols="50"

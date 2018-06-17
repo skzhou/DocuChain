@@ -17,7 +17,7 @@ export default class Set extends React.Component {
         key: '',
       },
       contract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      queriedSignee1: false
+      queriedSignee1: true
     };
     // fetch('localhost:4000/api?endpoint=getSignee1Signature')
     //   .then((response => {
@@ -80,7 +80,7 @@ export default class Set extends React.Component {
             <div className="col-md-6">
               <Signee
                 disabled={this.state.signee1.alreadySigned}
-                label="Signee 1"
+                reference="1"
                 model={this.state.signee1}
                 update={(payload) => this.update('signee1', payload)}
               />
@@ -88,7 +88,7 @@ export default class Set extends React.Component {
             <div className="col-md-6">
               <Signee
                 disabled={!this.state.signee1.alreadySigned}
-                label="Signee 2"
+                reference="2"
                 model={this.state.signee2}
                 update={(payload) => this.update('signee2', payload)}
               />

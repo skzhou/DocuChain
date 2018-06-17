@@ -6,6 +6,7 @@ export default class Key extends React.Component {
       <div>
         <label>Key</label>
         <textarea
+          id="key-input"
           className="form-control"
           onChange={(event) => this.props.update(event.target.value)}
           value={this.props.model}
