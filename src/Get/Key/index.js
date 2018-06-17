@@ -4,7 +4,12 @@ export default class Key extends React.Component {
   render() {
     return (
       <div>
-        <textarea onChange={(event) => this.props.update(event.target.value)} value={this.props.model}></textarea>
+        <textarea
+          className="form-control"
+          onChange={(event) => this.props.update(event.target.value)}
+          placeholder="Enter public key"
+          value={this.props.model}
+        ></textarea>
       </div>
     );
   }

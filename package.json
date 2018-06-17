@@ -8,9 +8,9 @@
   },
   "scripts": {
     "dev": "concurrently --kill-others \"npm run solidity\" \"npm run react\"",
-    "solidity": "lite-server",
+    "solidity": "PORT=3000 lite-server",
     "react": "PORT=5000 react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nodejs": "PORT=4000"
   },
   "author": "",
   "license": "ISC",

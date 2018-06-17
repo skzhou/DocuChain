@@ -22,7 +22,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
         <div style={{display: (this.state.page === 'select' ? 'block' : 'none')}}>
           <Select update={(payload) => this.update('page', payload)} />

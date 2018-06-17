@@ -25,8 +25,9 @@ export default class Get extends React.Component {
         <Key update={(payload) => this.update('key', payload)} />
         <input
           id="get-contract"
+          className="btn btn-primary"
           type="button"
-          value="Submit"
+          value="Get contract"
           disabled={!this.isSubmitButtonEnabled()}
         />
         {this.state.contract && <Contract />}

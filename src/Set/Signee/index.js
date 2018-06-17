@@ -7,16 +7,21 @@ export default class Signee extends React.Component {
   render() {
     return (
       <div>
+        <label>{this.props.label}</label>
         <input
+          className="form-control"
+          disabled={this.props.disabled}
           type="text"
-          placeholder="Name"
+          placeholder="Enter name"
           value={this.props.model.name}
           onChange={(event) => this.props.update({name: event.target.value})}
         />
         <textarea
+          className="form-control"
+          disabled={this.props.disabled}
           rows="4"
           cols="50"
-          placeholder="Key"
+          placeholder="Enter public key"
           onChange={(event) => this.props.update({key: event.target.value})}
           value={this.props.model.key}
         ></textarea>
