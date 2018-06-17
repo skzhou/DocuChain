@@ -10,6 +10,30 @@ contract Signing {
   mapping (address => string) pub_keys;
   mapping (string => address) addrs;
 
+  function getSigner_1() public view returns (address) {
+    return signer_1;
+  }
+
+  function getSigner_2() public view returns (address) {
+    return signer_2;
+  }
+
+  function getOriginal() public view returns (address) {
+    return original;
+  }
+
+  function getSigned_1() public view returns (address) {
+    return signed_1;
+  }
+
+  function getSigned_2() public view returns (address) {
+    return signed_2;
+  }
+
+  function completion() public view returns (bool) {
+    return state == 2;
+  }
+
   constructor() public {
 
     state = 0;
@@ -55,9 +79,7 @@ contract Signing {
       return state;
   }
 
-  function completion() public view returns (bool) {
-    return state == 2;
-  }
+
 
   function concat(string _a, string _b) constant returns (string){
     bytes memory bytes_a = bytes(_a);
