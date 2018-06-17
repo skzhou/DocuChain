@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Header from './Header/index';
 import Footer from './Footer/index';
-import Select from './Select/index';
+import Landing from './Landing/index';
 import Set from './Set/index';
 import Get from './Get/index';
 
@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 'select' // ['select', 'set', 'get']
+      page: 'landing' // ['landing', 'set', 'get']
     };
   }
   update(field, payload) {
@@ -26,8 +26,8 @@ class App extends React.Component {
     return (
       <div className="container">
         <Header />
-        <div style={{display: (this.state.page === 'select' ? 'block' : 'none')}}>
-          <Select update={(payload) => this.update('page', payload)} />
+        <div style={{display: (this.state.page === 'landing' ? 'block' : 'none')}}>
+          <Landing update={(payload) => this.update('page', payload)} />
         </div>
         <div style={{display: (this.state.page === 'set' ? 'block' : 'none')}}>
           <Set />
