@@ -23,7 +23,7 @@ export default class Signee extends React.Component {
           cols="50"
           placeholder="Enter public key"
           onChange={(event) => this.props.update({key: event.target.value})}
-          value={this.props.model.key}
+          value={this.props.disabled && this.props.model.key ? '**********' : this.props.model.key}
         ></textarea>
       </div>
     );

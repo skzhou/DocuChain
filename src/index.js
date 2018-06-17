@@ -8,6 +8,8 @@ import Select from './Select/index';
 import Set from './Set/index';
 import Get from './Get/index';
 
+import './index.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
