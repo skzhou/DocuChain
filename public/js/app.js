@@ -7182,7 +7182,7 @@ App = {
   markAdopted: function(adopters, account) {
     $('#set-contract').text('Success').attr('disabled', true);
   },
-
+  
   handleAdopt: function(event) {
     event.preventDefault();
     var signingInstance;

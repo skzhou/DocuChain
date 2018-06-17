@@ -11,9 +11,8 @@ export default class Get extends React.Component {
       signeeName: '',
       contract: {
         contract: '',
-        // contract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        signee1Name: 'John John',
-        signee2Name: 'Jane Jane',
+        signee1Name: 'Tom',
+        signee2Name: 'Jerry',
       },
     };
   }
@@ -27,6 +26,11 @@ export default class Get extends React.Component {
   }
   shouldShowContract() {
     return this.state.contract.contract.length !== 0;
+  }
+  submit() {
+    const newState = Object.assign(this.state);
+    newState.contract.contract = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+    this.setState(newState);
   }
   render() {
     return (
@@ -43,6 +47,7 @@ export default class Get extends React.Component {
           className="btn btn-primary"
           type="button"
           value="Get contract"
+          onClick={() => this.submit()}
           disabled={!this.shouldEnableSubmitButton()}
         />
         <div style={{display: this.shouldShowContract() ? 'block' : 'none'}}>
