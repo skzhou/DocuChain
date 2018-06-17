@@ -1,14 +1,20 @@
 import React from 'react';
 
 import Contract from './Contract/index';
+import Signee from './../Signee/index';
 import Key from './Key/index';
 
 export default class Get extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: '',
-      contract: '',
+      signeeName: '',
+      contract: {
+        contract: '',
+        // contract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        signee1Name: 'John John',
+        signee2Name: 'Jane Jane',
+      },
     };
   }
   update(field, payload) {
@@ -16,21 +22,32 @@ export default class Get extends React.Component {
     newState[field] = payload;
     this.setState(newState);
   }
-  isSubmitButtonEnabled() {
-    return this.state.key.length;
+  shouldEnableSubmitButton() {
+    return this.state.signeeName.length;
+  }
+  shouldShowContract() {
+    return this.state.contract.contract.length !== 0;
   }
   render() {
     return (
       <div>
-        <Key update={(payload) => this.update('key', payload)} />
+        {/* <Key update={(payload) => this.update('key', payload)} /> */}
+        <Signee
+          // disabled={this.state.signee1.alreadySigned}
+          reference=""
+          options={this.props.signees}
+          update={(payload) => this.update('signeeName', payload.name)}
+        />
         <input
           id="get-contract"
           className="btn btn-primary"
           type="button"
           value="Get contract"
-          disabled={!this.isSubmitButtonEnabled()}
+          disabled={!this.shouldEnableSubmitButton()}
         />
-        {this.state.contract && <Contract />}
+        <div style={{display: this.shouldShowContract() ? 'block' : 'none'}}>
+          <Contract model={this.state.contract} />
+        </div>
       </div>
     );
   }
