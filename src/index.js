@@ -24,9 +24,15 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        {this.state.page === 'select' && <Select update={(payload) => this.update('page', payload)} />}
-        {this.state.page === 'set' && <Set />}
-        {this.state.page === 'get' && <Get />}
+        <div style={{display: (this.state.page === 'select' ? 'block' : 'none')}}>
+          <Select update={(payload) => this.update('page', payload)} />
+        </div>
+        <div style={{display: (this.state.page === 'set' ? 'block' : 'none')}}>
+          <Set />
+        </div>
+        <div style={{display: (this.state.page === 'get' ? 'block' : 'none')}}>
+          <Get />
+        </div>
         <Footer />
       </div>
     );

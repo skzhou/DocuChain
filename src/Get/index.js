@@ -16,16 +16,19 @@ export default class Get extends React.Component {
     newState[field] = payload;
     this.setState(newState);
   }
-  submit() {
-    if (this.state.key.length) {
-      alert(JSON.stringify(this.state, null, 2));
-    }
+  isSubmitButtonEnabled() {
+    return this.state.key.length;
   }
   render() {
     return (
       <div>
         <Key update={(payload) => this.update('key', payload)} />
-        <input type="button" value="submit" onClick={this.submit.bind(this)} />
+        <input
+          id="get-contract"
+          type="button"
+          value="Submit"
+          disabled={!this.isSubmitButtonEnabled()}
+        />
         {this.state.contract && <Contract />}
       </div>
     );

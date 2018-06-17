@@ -33,13 +33,25 @@ export default class Set extends React.Component {
     }
     this.setState(newState);
   }
+  isSubmitButtonEnabled() {
+    const areSigneeFieldsDefined = (signee) => {
+      return signee.name.length && signee.key.length;
+    }
+    return (areSigneeFieldsDefined(this.state.signee1) && areSigneeFieldsDefined(this.state.signee2) && this.state.contract.length);
+  }
   render() {
     return (
       <div>
         <Signee model={this.state.signee1} update={(payload) => this.update('signee1', payload)} />
         <Signee model={this.state.signee2} update={(payload) => this.update('signee2', payload)} />
         <Contract model={this.state.contract} update={(payload) => this.update('contract', payload)} />
-        <input type="button" onClick={this.props.submit} value="Submit" />
+        <input
+          id="submit-contract"
+          type="button"
+          onClick={this.props.submit}
+          disabled={!this.isSubmitButtonEnabled()}
+          value="Submit"
+        />
       </div>
     );
   }
