@@ -43,11 +43,35 @@ App = {
 
       // Set the provider for our contract
       App.contracts.Signing.setProvider(App.web3Provider);
-
     });
 
     return App.bindEvents();
   },
+
+
+  // prepareDoc: function() {
+    
+  //   var signingInstance;
+
+  //   web3.eth.getAccounts(function(error, accounts) {
+  //     if (error) {
+  //       console.log(error);
+  //     }
+
+  //     console.log(accounts[0]);
+
+  //     App.contracts.Signing.deployed().then(function(instance) {
+  //       signingInstance = instance;
+  //       var res = signingInstance.real_constructor('0x52f0c2E6260aB3eE564CE4354985A9b8500E62Fe', '0x632E605A551E3EbaA095C1e16681e6e3BD54fAf8', "__doc__");
+  //       console.log(res);    
+  //       return res;
+  //     }).catch(function(err) {
+  //       console.log(err.message);
+  //     });
+  //   }); 
+
+  //   return App.bindEvents();
+  // },
 
   bindEvents: function() {
     $(document).on('click', '.btn-adopt', App.handleAdopt);
@@ -71,14 +95,18 @@ App = {
       }
 
       var account = accounts[0];
-
+      var account = accounts[1];
       console.log(accounts[0]);
+      console.log(accounts[1]);
 
       App.contracts.Signing.deployed().then(function(instance) {
         signingInstance = instance;
 
-        // Execute adopt as a transaction by sending account
-        return signingInstance.sign("", {from: account});
+        signingInstance.real_constructor('Tom', 'Jerry', "__doc__", {from: account});
+
+        var res = signingInstance.sign({from: account});    
+        // console.log(res);    
+        return res;
       }).then(function(result) {
         return App.markAdopted();
       }).catch(function(err) {
